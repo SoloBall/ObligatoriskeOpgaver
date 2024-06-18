@@ -1,0 +1,5 @@
+SELECT * FROM events WHERE category = "Fest" AND location = "klubhuset";
+
+SELECT * FROM events WHERE date < GETDATE() ORDER BY category, title;
+
+UPDATE news SET isVerified = 1;

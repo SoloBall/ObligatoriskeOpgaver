@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Info</title>
+</head>
+
+<body>
+    <div w3-include-html="../Templates/header.html"></div>
+    <div class="center">
+        <h3><strong>Kaostek DB</strong></h3>
+        <h4><strong>Armandas Ruginis</strong></h4>
+    </div>
+    <div class="leaderboard">
+        <h5>
+            <strong>Beskrivelse</strong>
+            <ul>
+                <li>KaosTek har en gammel database med kun én tabel. Tabellen indeholder oplysninger, der er relevante for deres kunder, såsom navne, adresser og ordrer. Det betyder, at al information kun er gemt i én tabel. Dette er en ulempe, der gør det vanskeligt at vedligeholde og opdatere diverse informationer.</li>
+            </ul>
+        </h5>
+        <h5>
+            <a href="https://github.com/SoloBall/ObligatoriskeOpgaver/tree/main/KaosTek"><strong>Link til GitHub</strong></a>
+        </h5>
+    </div>
+
+    <script>
+    function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /* Loop through a collection of all HTML elements: */
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+                /* Make an HTTP request using the attribute value as the file name: */
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                        if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                        /* Remove the attribute, and call this function once more: */
+                        elmnt.removeAttribute("w3-include-html");
+                        includeHTML();
+                    }
+                }
+                xhttp.open("GET", file, true);
+                xhttp.send();
+                /* Exit the function: */
+                return;
+            }
+        }
+    }
+    </script>
+    <script>
+    includeHTML();
+    </script>
+</body>
+</html>

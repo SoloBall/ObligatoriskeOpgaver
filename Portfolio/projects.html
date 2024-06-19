@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+    <div w3-include-html="Templates/header.html"></div>
+    <div class="container" style="width: 100%">
+        <a class="btn brand z-depth-0" style="border-radius: 50%; font-size: 20pt" href="http://<?= $ip ?>/test/add_meme.php">+</a>
+        <form style="max-width: 100%; margin: 0px; color: black;" class="center">
+            <div class="card">
+                <a href="Projects/kaosTek.html">
+                    <u><label style="font-size: 20px" class="pointer">KaosTek - kundedatabase<br /></label></u>
+                </a>
+                <u><img style="max-height: 500px; max-width: 500px" src="img/kaostek.png" /> <br />
+            </div>
+            <div class="card">
+                <a href="Projects/kajak.html">
+                    <u><label style="font-size: 20px" class="pointer">Digitalisering af kajakklubbens opslagstavle<br /></label></u>
+                </a>
+                <img style="max-height: 500px; max-width: 500px" src="img/produkt.png" /> <br />
+            </div>
+            <div class="card">
+                <a href="index.html">
+                    <u><label style="font-size: 20px" class="pointer">Portfolio hjemmesiden<br /></label></u>
+                </a>
+                <img style="max-height: 500px; max-width: 500px" src="img/portfolio.png" /> <br />
+            </div>
+        </form>
+    </div>
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /* Loop through a collection of all HTML elements: */
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain atrribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /* Make an HTTP request using the attribute value as the file name: */
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /* Remove the attribute, and call this function once more: */
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /* Exit the function: */
+                    return;
+                }
+            }
+        }
+    </script>
+    <script>
+        includeHTML();
+    </script>
+</body>
+</html>

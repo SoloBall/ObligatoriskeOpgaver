@@ -100,10 +100,20 @@
 <body class="grey lighten-4">
     <nav class="white z-depth-0">
         <div class="container">
-            <a href="index.html" class="brand-logo brand-text">Project Site</a>
+            <button onclick="RedirectToIndex()" style="background-color:white; border:hidden; margin:10px" class="brand-logo brand-text pointer">Project Site</button>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
-                <li id="signup"><a href="http://localhost/portfolio/projects.html" class="btn brand z-depth-0"> Projects </a></li>
+                <li><button onclick="RedirectToProjects()" class="btn brand z-de    pth-0"> Projects </button></li>
             </ul>
         </div>
     </nav>
+    <script>
+        window.onload = function () {
+            if (window.location.pathname.includes('/Projects/')) {
+                src = "../Scripts/redirect.js"
+            }
+            else {
+                src = "Scripts/redirect.js"
+            }
+        }
+    </script>
 </body>
